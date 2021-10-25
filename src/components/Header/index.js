@@ -1,37 +1,26 @@
 import React from "react";
-
+import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-
-import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
-import {Button, styled} from "@mui/material";
 
 import './styles.css';
-import {useSelector} from "react-redux";
+
 import {selectIsUserLoggedIn} from "../../redux/user/selectors";
 
-const ColorButton = styled(Button)(({ theme }) => ({
-    color: 'rgb(152,150,150)',
-    '&:hover': {
-        backgroundColor: 'transparent',
-    },
-}));
-
-export const Header: React.FC = () => {
+const Header = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
-    const isLoggedIn: boolean = useSelector(selectIsUserLoggedIn);
+    const isLoggedIn = useSelector(selectIsUserLoggedIn);
 
-    const handleClick = (event: any) => {
+    const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
@@ -40,19 +29,26 @@ export const Header: React.FC = () => {
     };
 
     return <nav className="header-nav">
-        <ColorButton variant="text" className="time-out-logo">Time Out</ColorButton>
-        <>
-            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-                <Typography sx={{ minWidth: 100 }}>Profile</Typography>
-                {isLoggedIn ?
-                    <Tooltip title="My profile">
-                        <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-                            <Avatar sx={{ width: 36, height: 36 }}>U</Avatar>
-                        </IconButton>
-                    </Tooltip> : <Link to="/login">Log In</Link> }
+        <div className="left-container">
+            <Link className="link" to="/">Time Out</Link>
+        </div>
+            <section className="left-container">
+                <div className="link-container">
+                    <Link className="link" to="/contact">Contact</Link>
+                </div>
+                <div className="link-container">
+                    <Link className="link" to="/">About Us</Link>
+                </div>
+                <div className="link-container">
+                    {isLoggedIn ?
+                        <Tooltip title="My profile">
+                            <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
+                                <Avatar sx={{ width: 36, height: 36 }}>U</Avatar>
+                            </IconButton>
+                        </Tooltip> : <Link to="/login" className="link">Log In</Link> }
+                </div>
+            </section>
 
-            </Box>
             <Menu
                 anchorEl={anchorEl}
                 open={open}
@@ -98,6 +94,8 @@ export const Header: React.FC = () => {
                     Logout
                 </MenuItem>
             </Menu>
-        </>
+
     </nav>;
 }
+
+export default Header;

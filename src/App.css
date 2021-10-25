@@ -1,5 +1,26 @@
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
 .App {
   text-align: center;
+}
+
+.left-container {
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.link-container {
+  padding-right: 15px;
+}
+
+.link {
+  color: #a8a8a8;
+  text-decoration: none;
 }
 
 .App-header {
