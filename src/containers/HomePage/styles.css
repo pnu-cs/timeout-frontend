@@ -1,0 +1,58 @@
+.mySwiper {
+    width: 80%;
+    height: 100%;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.swiper-slide > img {
+    height: 500px;
+}
+
+.swiper-slide  {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70vh;
+}
+
+.swiper-pagination {
+    height: 10vh;
+}
+
+.slide-description {
+    text-align: left;
+    max-width: 60%;
+}
+
+.slide-description > h1 {
+    color: #e0e0dd;
+}
+
+.slide-description > h2 {
+    color: #c2833a;
+    line-height: 25px;
+}
+
+.slide-description > p {
+    color: #a8a8a8;
+}
+
+.swiper-pagination-bullet {
+    width: 100px;
+    height: 2px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color: #000;
+    opacity: 1;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+
+.swiper-pagination-bullet-active {
+    background: #c2833a;
+}
