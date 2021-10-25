@@ -16,7 +16,10 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  padding-top: 1rem;
+  background: rgb(98,97,96);
+  background: radial-gradient(circle, rgba(98,97,96,1) 0%, rgba(25,25,25,1) 98%);
+  height: 100vh;
+  width: 100vw;
 }
