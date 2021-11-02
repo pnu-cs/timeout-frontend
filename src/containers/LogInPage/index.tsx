@@ -7,9 +7,9 @@ import {
     styled,
     Grid,
     IconButton,
-    ButtonProps,
-    Link
+    ButtonProps
 } from '@mui/material';
+import {Link} from "react-router-dom";
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 
@@ -19,15 +19,6 @@ import {logInInit} from "../../redux/user/actions";
 import './styles.css';
 
 import {Visibility, VisibilityOff} from "@mui/icons-material";
-
-// TODO add layout for login form
-// на цій сторінці має бути форма для логіну, я тут використовую бібліотеку material ui, тому що вона має готові стилізовані форми
-// але нам ці стилі не дуже підходять, тому тут треба застилізувати і зробити гарну форму яка буде підходити під дизайн
-// PS мені здається що тут має бути поле email і password, але треба узгодити як ми на бекенді будемо логінити користувачів
-// dispatch(logInInit(userData)) - в цьому місці дані з форми викликають сагу src/redux/user/sagas/logInSaga.tsx
-// там повинен бути реквест, який залогінить користувача та поверне нам токен
-// цей токен треба зберегти в сховище (redux але краще пошукати більш секюрне місце) і надалі перевіряти
-// що має бути доступне користувачу який залогінений і що не має
 
 const StylizedTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -59,8 +50,8 @@ function LogInPage() {
         showPassword: Boolean
     };
 
-    console.log(email);
-    console.log(password);
+    //console.log(email);
+    //console.log(password);
 
     const onLogInPress = () => dispatch(logInInit(userData));
 
@@ -123,7 +114,7 @@ function LogInPage() {
             </Grid>
             <Grid item>
                 <FormControl>
-                    <p>New to TimeOut? <Link href="/signup" underline="none" color="#58A6FF">Create an account</Link>.</p>
+                    <p>New to TimeOut? <Link to="/signup" className="link-style">Create an account</Link>.</p>
                 </FormControl>
             </Grid>
         </Grid>
