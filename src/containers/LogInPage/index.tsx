@@ -35,16 +35,15 @@ const StylizedTextField = styled(TextField)({
             borderColor: '#fff',
         },
         '&:hover fieldset': {
-            borderColor: '#03e9f4',
+            borderColor: '#1f6feb',
         },
         '&.Mui-focused fieldset': {
-            borderColor: '#03e9f4',
+            borderColor: '#1f6feb',
         },
     },
 });
 
 const ColorButton = styled(Button)<ButtonProps>(() => ({
-    borderColor: '#03e9f4',
     color: '#fff'
 }));
 
@@ -60,7 +59,8 @@ function LogInPage() {
         showPassword: Boolean
     };
 
-    //console.log(password);
+    console.log(email);
+    console.log(password);
 
     const onLogInPress = () => dispatch(logInInit(userData));
 
@@ -118,18 +118,12 @@ function LogInPage() {
             </Grid>
             <Grid item>
                 <FormControl fullWidth>
-                    <ColorButton className="stylized-button" variant="outlined" onClick={onLogInPress}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Log in
-                    </ColorButton>
+                    <ColorButton className="glow-on-hover" variant="text" onClick={onLogInPress}>Log in</ColorButton>
                 </FormControl>
             </Grid>
             <Grid item>
                 <FormControl>
-                    <p>New to TimeOut? <Link href="/signup" underline="none" color="#03e9f4">Create an account</Link>.</p>
+                    <p>New to TimeOut? <Link href="/signup" underline="none" color="#58A6FF">Create an account</Link>.</p>
                 </FormControl>
             </Grid>
         </Grid>
