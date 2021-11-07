@@ -1,9 +1,9 @@
-.login-box {
+.signup-box {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 450px;
-    padding: 30px 40px 15px 40px;
+    padding: 30px 40px 30px 40px;
     transform: translate(-50%, -50%);
     background: rgba(0,0,0,.5);
     box-sizing: border-box;
@@ -11,28 +11,14 @@
     border-radius: 10px;
 }
 
-.login-box h2 {
+.signup-box h2 {
     margin: 0 0 30px;
     padding: 0;
     color: #ffffff;
     text-align: center;
 }
 
-.login-box p {
-    color: #ffffff;
-}
-
-.signup-link-style:link {
-    text-decoration: none;
-    color: #58A6FF;
-}
-
-.signup-link-style:visited {
-    text-decoration: none;
-    color: #58A6FF;
-}
-
-.login-button-glow {
+.signup-button-glow {
     border: none;
     outline: none;
     color: #fff;
@@ -43,7 +29,7 @@
     border-radius: 10px;
 }
 
-.login-button-glow:before {
+.signup-button-glow:before {
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
@@ -60,19 +46,19 @@
     border-radius: 10px;
 }
 
-.login-button-glow:active {
+.signup-button-glow:active {
     color: #000
 }
 
-.login-button-glow:active:after {
+.signup-button-glow:active:after {
     background: transparent;
 }
 
-.login-button-glow:hover:before {
+.signup-button-glow:hover:before {
     opacity: 1;
 }
 
-.login-button-glow:after {
+.signup-button-glow:after {
     z-index: -1;
     content: '';
     position: absolute;
