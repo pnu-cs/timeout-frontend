@@ -1,15 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
-import {
-    Button,
-    ButtonProps,
-    FormControl,
-    Grid,
-    IconButton,
-    InputAdornment,
-    styled,
-    TextField
-} from "@mui/material";
+import {Button, ButtonProps, FormControl, Grid, IconButton, InputAdornment, styled, TextField} from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -27,9 +18,6 @@ const StylizedTextField = styled(TextField)({
         },
         '&.Mui-focused fieldset': {
             borderColor: '#1f6feb'
-        },
-        '& p':{
-            color: 'white',
         },
     },
 });
