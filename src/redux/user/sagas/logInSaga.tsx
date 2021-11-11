@@ -1,30 +1,45 @@
 import { put } from 'redux-saga/effects';
 import { push } from 'react-router-redux'
 
-import {signUpFailed, logInSucceed} from '../actions';
+import {logInSucceed, logInFailed} from '../actions';
+import {LogInPayloadType, UserLogInRequestType} from "../types";
 
-interface PayloadType {
-    userData: {
-        email: string,
-        password: string,
+const LOG_IN_PATH = 'http://localhost:8080/auth/login';
+
+export default function* logInSaga({ payload }: LogInPayloadType) {
+    const request: UserLogInRequestType = {
+        email: payload.email,
+        password: payload.password
     }
-}
 
-// TODO тут треба пошукати як проставити тип для пейлоаду (в тайпскріпті), ось він зверху описаний
-// але я поки не знайшла в документації як правильно зробити
-// @ts-ignore
-export default function* logInSaga({ payload }: object) {
-    console.log('user input data', payload);
+    let response: string = '';
 
     try {
-        // TODO here should be request to log in a user, by this time it is temporary response
-        // this response should return token
-        const validToken = 'token';
+        yield fetch(LOG_IN_PATH, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(request),
+        })
+            .then(res => {
+                console.log(res);
+                if (res?.status !== 200) {
+                    throw Error('Error');
+                }
+                return Date.now().toString();
+            })
+            .then(data => response = data)
+            .catch(e => console.error('FETCH ERROR', e));
 
-        yield put(logInSucceed({ validToken }));
-        yield put(push('/'));
+        if (response) {
+            yield put(logInSucceed(response));
+            yield put(push('/'));
+        }
     } catch (error: any) {
-        console.error('Sign Up Error', error);
-        yield put(signUpFailed(error));
+        console.error('SIGN UP ERROR', error?.message);
+        yield put(logInFailed(error));
     }
+
 }

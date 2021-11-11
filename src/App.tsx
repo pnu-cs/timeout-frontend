@@ -1,5 +1,6 @@
 import React from 'react';
-import {Route, Switch, BrowserRouter} from "react-router-dom";
+import { ConnectedRouter } from 'connected-react-router'
+import {Route, Switch} from "react-router-dom";
 import { Provider } from 'react-redux'
 
 import LogInPage from "./containers/LogInPage";
@@ -8,7 +9,7 @@ import HomePage from "./containers/HomePage/index";
 import MyProfile from "./containers/MyProfile";
 import ContactPage from "./containers/ContactPage/index";
 
-import configureStore from "./redux/store";
+import configureStore, { history } from "./redux/store";
 
 import Header from "./components/Header";
 import './App.css';
@@ -18,7 +19,7 @@ const store = configureStore();
 const App: React.FC = () => {
     return (
         <Provider store={store}>
-            <BrowserRouter>
+            <ConnectedRouter history={history}>
                 <div className="container">
                     <Header />
                     <Switch>
@@ -29,7 +30,7 @@ const App: React.FC = () => {
                         <Route path="/contact" component={ContactPage} />
                     </Switch>
                 </div>
-            </BrowserRouter>
+            </ConnectedRouter>
         </Provider>
     )
 }

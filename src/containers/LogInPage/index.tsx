@@ -10,6 +10,7 @@ import {logInInit} from "../../redux/user/actions";
 import './styles.css';
 
 import {Visibility, VisibilityOff} from "@mui/icons-material";
+import {LogInUserInputDataType} from "../../redux/user/types";
 
 const StylizedTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -29,16 +30,16 @@ const ColorButton = styled(Button)<ButtonProps>(() => ({
     color: '#fff'
 }));
 
-function LogInPage() {
+const LogInPage: React.FC = () => {
     const dispatch = useDispatch();
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
-    const [showPassword, setPasswordVisibility] = useState(false);
 
-    const userData: object = {
+    const [password, setPassword] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [showPassword, setPasswordVisibility] = useState<boolean>(false);
+
+    const userData: LogInUserInputDataType = {
         email,
         password,
-        showPassword: Boolean
     };
 
     const onLogInPress = () => dispatch(logInInit(userData));

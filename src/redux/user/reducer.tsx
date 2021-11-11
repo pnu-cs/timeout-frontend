@@ -1,15 +1,16 @@
 import { TYPES } from './contants';
 
 const initialState = {
-    validToken: null,
+    validToken: '',
     currentUser: null,
     isLoading: false,
     error: null,
 };
 
 interface PayloadType {
-    user: object,
-    error: string,
+    user?: object,
+    error?: string,
+    token?: string,
 }
 
 interface Action {
@@ -29,14 +30,14 @@ export const userReducer = (state = initialState, action: Action ) => {
             return {
                 ...state,
                 isLoading: false,
-                currentUser: action.payload.user,
+                currentUser: action.payload,
             };
         }
         case TYPES.SIGN_UP_FAILED: {
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload.error,
+                error: action.payload,
             };
         }
         case TYPES.LOG_IN_INIT: {

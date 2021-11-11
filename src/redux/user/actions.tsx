@@ -1,8 +1,9 @@
 import { TYPES } from './contants';
+import { SignUpUserInputDataType, LogInUserInputDataType} from "./types";
 
-export const signUpInit = (userInputData: object, passwordConfirm: object) => ({
+export const signUpInit = (userInputData: SignUpUserInputDataType) => ({
     type: TYPES.SIGN_UP_INIT,
-    payload: { userInputData, passwordConfirm },
+    payload: userInputData ,
 });
 
 export const signUpSucceed = (payload: object) => ({
@@ -15,12 +16,12 @@ export const signUpFailed = (payload: object) => ({
     payload,
 });
 
-export const logInInit = (payload: object) => ({
+export const logInInit = (payload: LogInUserInputDataType) => ({
     type: TYPES.LOG_IN_INIT,
     payload,
 });
 
-export const logInSucceed = (payload: object) => ({
+export const logInSucceed = (payload: string) => ({
     type: TYPES.LOG_IN_SUCCEED,
     payload,
 });

@@ -94,7 +94,6 @@ const Header = () => {
                     Logout
                 </MenuItem>
             </Menu>
-
     </nav>;
 }
 

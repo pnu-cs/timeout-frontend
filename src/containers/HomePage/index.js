@@ -18,7 +18,7 @@ export const HomePage = () => {
     const pagination = {
         "clickable": true,
         "renderBullet": function (index, className) {
-            return '<span class=\"' + className + '\"></span>';
+            return '<span class="' + className + '"></span>';
         }
     }
 
@@ -26,7 +26,7 @@ export const HomePage = () => {
         <Swiper
             mousewheel={true}
             className="mySwiper"
-            pagination={pagination}
+            pagination={pagination}z
             loop={true}
             autoplay={{
                 "delay": 2500,
