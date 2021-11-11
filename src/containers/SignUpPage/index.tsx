@@ -7,6 +7,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {signUpInit} from "../../redux/user/actions";
 import './styles.css';
+import {SignUpUserInputDataType} from "../../redux/user/types";
 
 const StylizedTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -28,34 +29,22 @@ const ColorButton = styled(Button)<ButtonProps>(() => ({
 
 function SignUpPage() {
     const dispatch = useDispatch();
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [passConfirm, setPassConfirm] = useState('');
-    const [showPassword, setPasswordVisibility] = useState(false);
-    const [showPassConfirm, setPassConfirmVisibility] = useState(false);
+    const [name, setName] = useState<string>('');
+    const [surname, setSurname] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [passConfirm, setPassConfirm] = useState<string>('');
+    const [showPassword, setPasswordVisibility] = useState<boolean>(false);
+    const [showPassConfirm, setPassConfirmVisibility] = useState<boolean>(false);
 
-    console.log(name);
-    console.log(surname);
-    console.log(email);
-    console.log(password);
-    console.log(passConfirm);
-
-    const userData: object = {
+    const userData: SignUpUserInputDataType = {
         name,
         surname,
         email,
         password,
-        showPassword: Boolean
     };
 
-    const passwordConfirm: object = {
-        passConfirm,
-        showPassConfirm: Boolean
-    };
-
-    const onSignUpPress = () => dispatch(signUpInit(userData, passwordConfirm));
+    const onSignUpPress = () => dispatch(signUpInit(userData));
 
     return <div className="signup-box">
         <h2>Create a new account</h2>
