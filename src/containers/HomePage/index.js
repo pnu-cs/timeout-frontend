@@ -26,7 +26,7 @@ export const HomePage = () => {
         <Swiper
             mousewheel={true}
             className="mySwiper"
-            pagination={pagination}z
+            pagination={pagination}
             loop={true}
             autoplay={{
                 "delay": 2500,
