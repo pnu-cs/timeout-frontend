@@ -40,9 +40,9 @@ export default function* signUpSaga({ payload } : SignUpPayloadType) {
             .then(data => response = data)
             .catch(e => console.error('FETCH ERROR', e));
 
-        if (status == 400) {
+        if (status === 400) {
             throw Error('Validation error');
-        } else if (status == 422) {
+        } else if (status === 422) {
             response.firstName = "";
             response.lastName = "";
             response.password = "";

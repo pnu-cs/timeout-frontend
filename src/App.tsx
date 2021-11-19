@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 
 import LogInPage from "./containers/LogInPage";
 import SignUpPage from "./containers/SignUpPage";
-import HomePage from "./containers/HomePage/index";
+import HomePage from "./containers/HomePage";
 import MyProfile from "./containers/MyProfile";
 import ContactPage from "./containers/ContactPage/index";
 
