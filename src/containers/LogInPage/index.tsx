@@ -4,13 +4,14 @@ import {Link} from "react-router-dom";
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {logInInit} from "../../redux/user/actions";
 
 import './styles.css';
 
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {LogInUserInputDataType} from "../../redux/user/types";
+import {selectIsUserError} from "../../redux/user/selectors";
 
 const StylizedTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -36,6 +37,8 @@ const LogInPage: React.FC = () => {
     const [password, setPassword] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [showPassword, setPasswordVisibility] = useState<boolean>(false);
+
+    const error = useSelector(selectIsUserError);
 
     const userData: LogInUserInputDataType = {
         email,
@@ -72,6 +75,8 @@ const LogInPage: React.FC = () => {
                         label="Password" value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         type={showPassword ? 'input' : 'password'}
+                        helperText={error && error?.userNotExists ? error?.userNotExists : ''}
+                        FormHelperTextProps={ { style: { color: 'red' } } }
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">

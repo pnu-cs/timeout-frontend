@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Button, ButtonProps, FormControl, Grid, IconButton, InputAdornment, styled, TextField} from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
@@ -8,6 +8,7 @@ import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {signUpInit} from "../../redux/user/actions";
 import './styles.css';
 import {SignUpUserInputDataType} from "../../redux/user/types";
+import {selectIsUserError} from "../../redux/user/selectors";
 
 const StylizedTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -37,6 +38,8 @@ function SignUpPage() {
     const [showPassword, setPasswordVisibility] = useState<boolean>(false);
     const [showPassConfirm, setPassConfirmVisibility] = useState<boolean>(false);
 
+    const error = useSelector(selectIsUserError);
+
     const userData: SignUpUserInputDataType = {
         name,
         surname,
@@ -54,6 +57,8 @@ function SignUpPage() {
                     <StylizedTextField
                         label="Name" value={name}
                         onChange={(e) => setName(e.target.value)}
+                        helperText={(error && error?.firstName) ? error?.firstName : ''}
+                        FormHelperTextProps={ { style: { color: 'red' } } }
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -73,6 +78,8 @@ function SignUpPage() {
                     <StylizedTextField
                         label="Surname" value={surname}
                         onChange={(e) => setSurname(e.target.value)}
+                        helperText={(error && error?.lastName) ? error?.lastName : ''}
+                        FormHelperTextProps={ { style: { color: 'red' } } }
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -92,6 +99,8 @@ function SignUpPage() {
                     <StylizedTextField
                         label="Email" value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        helperText={(error && error?.email) ? error?.email : ''}
+                        FormHelperTextProps={ { style: { color: 'red' } } }
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -112,6 +121,8 @@ function SignUpPage() {
                         label="Password" value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         type={showPassword ? 'input' : 'password'}
+                        helperText={(error && error?.password) ? error?.password : ''}
+                        FormHelperTextProps={ { style: { color: 'red' } } }
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
