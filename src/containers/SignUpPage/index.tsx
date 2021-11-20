@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
-import {Button, ButtonProps, FormControl, Grid, IconButton, InputAdornment, styled, TextField} from "@mui/material";
+import {FormControl, Grid, IconButton, InputAdornment} from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -8,26 +8,9 @@ import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {signUpInit} from "../../redux/user/actions";
 import './styles.css';
 import {SignUpUserInputDataType} from "../../redux/user/types";
+import {ColorButton, StylizedTextField} from "../stylized_components";
 
-const StylizedTextField = styled(TextField)({
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: '#fff',
-        },
-        '&:hover fieldset': {
-            borderColor: '#1f6feb'
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: '#1f6feb'
-        },
-    },
-});
-
-const ColorButton = styled(Button)<ButtonProps>(() => ({
-    color: '#fff'
-}));
-
-function SignUpPage() {
+const SignUpPage: React.FC = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState<string>('');
     const [surname, setSurname] = useState<string>('');
@@ -50,8 +33,7 @@ function SignUpPage() {
         <h2>Create a new account</h2>
         <Grid container direction={"column"} spacing={3}>
             <Grid item>
-                <FormControl fullWidth>
-                    <StylizedTextField
+                    <StylizedTextField fullWidth
                         label="Name" value={name}
                         onChange={(e) => setName(e.target.value)}
                         InputProps={{
@@ -66,11 +48,9 @@ function SignUpPage() {
                             style: { color: 'white' }
                         }}
                     />
-                </FormControl>
             </Grid>
             <Grid item>
-                <FormControl fullWidth>
-                    <StylizedTextField
+                    <StylizedTextField fullWidth
                         label="Surname" value={surname}
                         onChange={(e) => setSurname(e.target.value)}
                         InputProps={{
@@ -85,11 +65,9 @@ function SignUpPage() {
                             style: { color: 'white' }
                         }}
                     />
-                </FormControl>
             </Grid>
             <Grid item>
-                <FormControl fullWidth>
-                    <StylizedTextField
+                    <StylizedTextField fullWidth
                         label="Email" value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         InputProps={{
@@ -104,11 +82,9 @@ function SignUpPage() {
                             style: { color: 'white' }
                         }}
                     />
-                </FormControl>
             </Grid>
             <Grid item>
-                <FormControl fullWidth>
-                    <StylizedTextField
+                    <StylizedTextField fullWidth
                         label="Password" value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         type={showPassword ? 'input' : 'password'}
@@ -133,7 +109,6 @@ function SignUpPage() {
                             style: { color: 'white' }
                         }}
                     />
-                </FormControl>
             </Grid>
             <Grid item>
                 <FormControl error fullWidth>
@@ -167,12 +142,10 @@ function SignUpPage() {
                 </FormControl>
             </Grid>
             <Grid item>
-                <FormControl fullWidth>
-                    <ColorButton className="signup-button-glow" variant="text" onClick={
-                        (e)=>((password === passConfirm) ? onSignUpPress() : e.preventDefault())}>
-                        Sign up
-                    </ColorButton>
-                </FormControl>
+                <ColorButton fullWidth className="signup-button-glow" variant="text" onClick={
+                    (e)=>((password === passConfirm) ? onSignUpPress() : e.preventDefault())}>
+                    Sign up
+                </ColorButton>
             </Grid>
         </Grid>
     </div>;

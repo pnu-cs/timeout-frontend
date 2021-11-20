@@ -1,13 +1,75 @@
 .root {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    height: 100vh;
+
 }
 
 .map {
-    height: 30vh;
+    height: 26vh;
     width: 100vw;
     border: none;
+    filter: invert(100%) contrast(70%);
+}
 
+h2 {
+    color: white;
+}
+
+.column {
+    position: absolute;
+    top: 64%;
+    left: 30%;
+    width: 500px;
+    padding: 5px 40px 25px 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+body #contact-form {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    width: 450px;
+    padding: 30px 40px 15px 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+body #contact-form input, body #contact-form textarea {
+    width: 100%;
+    border: 0;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+body #contact-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+body #contact-form button {
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    cursor: pointer;
+    background: #fca253;
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+body #contact-form span {
+    display: none;
+    text-align: center;
+}
+
+body #contact-form span.visible {
+    display: block;
 }

@@ -7,7 +7,7 @@ import LogInPage from "./containers/LogInPage";
 import SignUpPage from "./containers/SignUpPage";
 import HomePage from "./containers/HomePage/index";
 import MyProfile from "./containers/MyProfile";
-import ContactPage from "./containers/ContactPage/index";
+import ContactPage from "./containers/ContactPage";
 
 import configureStore, { history } from "./redux/store";
 
