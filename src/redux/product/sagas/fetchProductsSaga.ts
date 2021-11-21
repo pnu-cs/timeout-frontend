@@ -28,41 +28,4 @@ export default function* fetchProductsSags() {
         console.error('FETCH PRODUCTS ERROR', error?.message);
         yield put(fetchProductsFailed(error));
     }
-
-    // yield put(fetchProductsSucceed([
-    //     {
-    //         title: 'Product 1',
-    //         price: '250$',
-    //         description: 'Classic Bayswater is an effortless day-yo-evening timepiece.',
-    //         useFor: 'For important meetings.',
-    //         brand: 'Brand: Rolex',
-    //         model: 'Daytona',
-    //         yearOfIssue:  1968,
-    //         housingMaterial: 'Housing material: steel',
-    //         strapMaterial:'Strap material: crocodile skin.',
-    //         dialColor: 'Dial color: black',
-    //         strapColor: 'Strap color: white',
-    //         housingThickness: 'Housing thickness: 37 mm',
-    //         strapLength: 'Strap length: 150mm',
-    //         clockWork: 'The watch works: mechanically / from the battery',
-    //         waterResistance: 'Water resistance of the watch: up to 3 atmospheres',
-    //     },
-    //     {
-    //         title: 'Product 2',
-    //         price: '250$',
-    //         description: 'Classic Bayswater is an effortless day-yo-evening timepiece.',
-    //         useFor: 'For important meetings.',
-    //         brand: 'Brand: Rolex',
-    //         model: 'Daytona',
-    //         yearOfIssue:  1968,
-    //         housingMaterial: 'Housing material: steel',
-    //         strapMaterial:'Strap material: crocodile skin.',
-    //         dialColor: 'Dial color: black',
-    //         strapColor: 'Strap color: white',
-    //         housingThickness: 'Housing thickness: 37 mm',
-    //         strapLength: 'Strap length: 150mm',
-    //         clockWork: 'The watch works: mechanically / from the battery',
-    //         waterResistance: 'Water resistance of the watch: up to 3 atmospheres',
-    //     }
-    // ]));
 }
