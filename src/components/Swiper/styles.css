@@ -56,3 +56,21 @@
 .swiper-pagination-bullet-active {
     background: #c2833a;
 }
+
+.buy-btn {
+    width: 150px;
+    outline: none;
+    color: #a8a8a8;
+    font-size: 16px;
+    background-color: transparent;
+    padding: 10px 20px;
+    border: 1px solid #c2833a;
+    border-radius: 20px;
+}
+
+.buy-btn:hover {
+    background-color: #c2833a;
+    color: #2d2d2d;
+    font-weight: bold;
+    cursor: pointer;
+}

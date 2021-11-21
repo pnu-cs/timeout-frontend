@@ -1,6 +1,6 @@
 
 export interface Product {
-    title: string,
+    name: string,
     price: string,
     description: string,
     useFor: string,
