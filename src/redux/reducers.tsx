@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router'
 import { userReducer } from './user/reducer';
+import { productsReducer } from './product/reducer';
 
 const rootReducer = (history: any) =>
     combineReducers({
         router: connectRouter(history),
-        userReducer
-        // can add more reducers like products, orders etc
+        userReducer,
+        productsReducer
     });
 
 export default rootReducer;
