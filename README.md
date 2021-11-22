@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pnu-cs-timeout&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=pnu-cs-timeout)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
