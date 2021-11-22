@@ -5,21 +5,24 @@
     filter: invert(100%) contrast(70%);
 }
 
-h1 {
-    color: white;
-}
-
-.column {
+.contact-box {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 500px;
-    padding: 5px 40px 25px 40px;
+    padding: 30px 40px 15px 40px;
     transform: translate(-50%, -50%);
     background: rgba(0,0,0,.5);
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
+}
+
+.contact-box h1 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #ffffff;
+    text-align: center;
 }
 
 .captcha {

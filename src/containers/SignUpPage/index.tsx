@@ -7,6 +7,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {signUpInit} from "../../redux/user/actions";
 import './styles.css';
+import '../button_style.css';
 import {SignUpUserInputDataType} from "../../redux/user/types";
 import {ColorButton, StylizedTextField} from "../stylized_components";
 
@@ -33,8 +34,8 @@ const SignUpPage: React.FC = () => {
         <h2>Create a new account</h2>
         <Grid container direction={"column"} spacing={3}>
             <Grid item>
-                    <StylizedTextField fullWidth
-                        label="Name" value={name}
+                    <StylizedTextField
+                        fullWidth label="Name" value={name}
                         onChange={(e) => setName(e.target.value)}
                         InputProps={{
                             startAdornment: (
@@ -50,8 +51,8 @@ const SignUpPage: React.FC = () => {
                     />
             </Grid>
             <Grid item>
-                    <StylizedTextField fullWidth
-                        label="Surname" value={surname}
+                    <StylizedTextField
+                        fullWidth label="Surname" value={surname}
                         onChange={(e) => setSurname(e.target.value)}
                         InputProps={{
                             startAdornment: (
@@ -67,8 +68,8 @@ const SignUpPage: React.FC = () => {
                     />
             </Grid>
             <Grid item>
-                    <StylizedTextField fullWidth
-                        label="Email" value={email}
+                    <StylizedTextField
+                        fullWidth label="Email" value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         InputProps={{
                             startAdornment: (
@@ -84,8 +85,8 @@ const SignUpPage: React.FC = () => {
                     />
             </Grid>
             <Grid item>
-                    <StylizedTextField fullWidth
-                        label="Password" value={password}
+                    <StylizedTextField
+                        fullWidth label="Password" value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         type={showPassword ? 'input' : 'password'}
                         InputProps={{
@@ -142,7 +143,7 @@ const SignUpPage: React.FC = () => {
                 </FormControl>
             </Grid>
             <Grid item>
-                <ColorButton fullWidth className="signup-button-glow" variant="text" onClick={
+                <ColorButton fullWidth className="button-glow" variant="text" onClick={
                     (e)=>((password === passConfirm) ? onSignUpPress() : e.preventDefault())}>
                     Sign up
                 </ColorButton>

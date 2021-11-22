@@ -8,6 +8,7 @@ import {useDispatch} from "react-redux";
 import {logInInit} from "../../redux/user/actions";
 
 import './styles.css';
+import '../button_style.css';
 
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {LogInUserInputDataType} from "../../redux/user/types";
@@ -73,7 +74,9 @@ const LogInPage: React.FC = () => {
                     />
             </Grid>
             <Grid item>
-                <ColorButton fullWidth className="login-button-glow" variant="text" onClick={onLogInPress}>Log in</ColorButton>
+                <ColorButton fullWidth className="button-glow" variant="text" onClick={onLogInPress}>
+                    Log in
+                </ColorButton>
             </Grid>
             <Grid item>
                 <p>New to TimeOut? <Link to="/signup" className="signup-link-style">Create an account</Link>.</p>
