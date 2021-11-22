@@ -1,8 +1,7 @@
-import {put} from "redux-saga/effects";
+import { put } from 'redux-saga/effects';
 
-import {fetchProductsInit} from "../../product/actions";
-
+import { fetchProductsInit } from '../../product/actions';
 
 export default function* fetchProductsSags() {
-    yield put(fetchProductsInit());
+  yield put(fetchProductsInit());
 }
