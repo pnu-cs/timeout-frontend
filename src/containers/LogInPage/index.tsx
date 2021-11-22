@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {FormControl, TextField, Button, InputAdornment, styled, Grid, IconButton, ButtonProps} from '@mui/material';
+import { InputAdornment, Grid, IconButton} from '@mui/material';
 import {Link} from "react-router-dom";
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
@@ -8,28 +8,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {logInInit} from "../../redux/user/actions";
 
 import './styles.css';
+import '../button_style.css';
 
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {LogInUserInputDataType} from "../../redux/user/types";
+
+import {ColorButton, StylizedTextField} from "../stylized_components";
+
 import {selectIsUserError} from "../../redux/user/selectors";
-
-const StylizedTextField = styled(TextField)({
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: '#fff',
-        },
-        '&:hover fieldset': {
-            borderColor: '#1f6feb',
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: '#1f6feb',
-        },
-    },
-});
-
-const ColorButton = styled(Button)<ButtonProps>(() => ({
-    color: '#fff'
-}));
 
 const LogInPage: React.FC = () => {
     const dispatch = useDispatch();
@@ -51,8 +37,7 @@ const LogInPage: React.FC = () => {
         <h2>Log in to your account</h2>
         <Grid container direction={"column"} spacing={3}>
             <Grid item>
-                <FormControl fullWidth>
-                    <StylizedTextField
+                    <StylizedTextField fullWidth
                         label="Email" value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         InputProps={{
@@ -67,11 +52,9 @@ const LogInPage: React.FC = () => {
                             style: { color: 'white' }
                         }}
                     />
-                </FormControl>
             </Grid>
             <Grid item>
-                <FormControl fullWidth>
-                    <StylizedTextField
+                    <StylizedTextField fullWidth
                         label="Password" value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         type={showPassword ? 'input' : 'password'}
@@ -96,17 +79,14 @@ const LogInPage: React.FC = () => {
                             style: { color: 'white' }
                         }}
                     />
-                </FormControl>
             </Grid>
             <Grid item>
-                <FormControl fullWidth>
-                    <ColorButton className="login-button-glow" variant="text" onClick={onLogInPress}>Log in</ColorButton>
-                </FormControl>
+                <ColorButton fullWidth className="button-glow" variant="text" onClick={onLogInPress}>
+                    Log in
+                </ColorButton>
             </Grid>
             <Grid item>
-                <FormControl>
-                    <p>New to TimeOut? <Link to="/signup" className="signup-link-style">Create an account</Link>.</p>
-                </FormControl>
+                <p>New to TimeOut? <Link to="/signup" className="signup-link-style">Create an account</Link>.</p>
             </Grid>
         </Grid>
     </div>;

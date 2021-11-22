@@ -1,34 +1,24 @@
 import React, {useState} from 'react';
+
+import {FormControl, Grid, IconButton, InputAdornment} from "@mui/material";
+
 import {useDispatch, useSelector} from "react-redux";
-import {Button, ButtonProps, FormControl, Grid, IconButton, InputAdornment, styled, TextField} from "@mui/material";
+
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {signUpInit} from "../../redux/user/actions";
 import './styles.css';
+import '../button_style.css';
 import {SignUpUserInputDataType} from "../../redux/user/types";
+
+import {ColorButton, StylizedTextField} from "../stylized_components";
+
 import {selectIsUserError} from "../../redux/user/selectors";
 
-const StylizedTextField = styled(TextField)({
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: '#fff',
-        },
-        '&:hover fieldset': {
-            borderColor: '#1f6feb'
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: '#1f6feb'
-        },
-    },
-});
 
-const ColorButton = styled(Button)<ButtonProps>(() => ({
-    color: '#fff'
-}));
-
-function SignUpPage() {
+const SignUpPage: React.FC = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState<string>('');
     const [surname, setSurname] = useState<string>('');
@@ -53,9 +43,8 @@ function SignUpPage() {
         <h2>Create a new account</h2>
         <Grid container direction={"column"} spacing={3}>
             <Grid item>
-                <FormControl fullWidth>
                     <StylizedTextField
-                        label="Name" value={name}
+                        fullWidth label="Name" value={name}
                         onChange={(e) => setName(e.target.value)}
                         helperText={(error && error?.firstName) ? error?.firstName : ''}
                         FormHelperTextProps={ { style: { color: 'red' } } }
@@ -71,12 +60,10 @@ function SignUpPage() {
                             style: { color: 'white' }
                         }}
                     />
-                </FormControl>
             </Grid>
             <Grid item>
-                <FormControl fullWidth>
                     <StylizedTextField
-                        label="Surname" value={surname}
+                        fullWidth label="Surname" value={surname}
                         onChange={(e) => setSurname(e.target.value)}
                         helperText={(error && error?.lastName) ? error?.lastName : ''}
                         FormHelperTextProps={ { style: { color: 'red' } } }
@@ -92,12 +79,10 @@ function SignUpPage() {
                             style: { color: 'white' }
                         }}
                     />
-                </FormControl>
             </Grid>
             <Grid item>
-                <FormControl fullWidth>
                     <StylizedTextField
-                        label="Email" value={email}
+                        fullWidth label="Email" value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         helperText={(error && error?.email) ? error?.email : ''}
                         FormHelperTextProps={ { style: { color: 'red' } } }
@@ -113,12 +98,10 @@ function SignUpPage() {
                             style: { color: 'white' }
                         }}
                     />
-                </FormControl>
             </Grid>
             <Grid item>
-                <FormControl fullWidth>
                     <StylizedTextField
-                        label="Password" value={password}
+                        fullWidth label="Password" value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         type={showPassword ? 'input' : 'password'}
                         helperText={(error && error?.password) ? error?.password : ''}
@@ -144,7 +127,6 @@ function SignUpPage() {
                             style: { color: 'white' }
                         }}
                     />
-                </FormControl>
             </Grid>
             <Grid item>
                 <FormControl error fullWidth>
@@ -178,12 +160,10 @@ function SignUpPage() {
                 </FormControl>
             </Grid>
             <Grid item>
-                <FormControl fullWidth>
-                    <ColorButton className="signup-button-glow" variant="text" onClick={
-                        (e)=>((password === passConfirm) ? onSignUpPress() : e.preventDefault())}>
-                        Sign up
-                    </ColorButton>
-                </FormControl>
+                <ColorButton fullWidth className="button-glow" variant="text" onClick={
+                    (e)=>((password === passConfirm) ? onSignUpPress() : e.preventDefault())}>
+                    Sign up
+                </ColorButton>
             </Grid>
         </Grid>
     </div>;
