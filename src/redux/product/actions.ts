@@ -1,15 +1,15 @@
-import { TYPES } from './constants';
+import TYPES from './constants';
 
 export const fetchProductsInit = () => ({
-    type: TYPES.FETCH_PRODUCTS_INIT,
+  type: TYPES.FETCH_PRODUCTS_INIT,
 });
 
 export const fetchProductsSucceed = (payload: object) => ({
-    type: TYPES.FETCH_PRODUCTS_SUCCEED,
-    payload,
+  type: TYPES.FETCH_PRODUCTS_SUCCEED,
+  payload,
 });
 
 export const fetchProductsFailed = (payload: object) => ({
-    type: TYPES.FETCH_PRODUCTS_FAILED,
-    payload,
+  type: TYPES.FETCH_PRODUCTS_FAILED,
+  payload,
 });
