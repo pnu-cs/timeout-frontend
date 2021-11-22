@@ -3,8 +3,14 @@ import { push } from 'connected-react-router'
 
 import { signUpSucceed, signUpFailed } from '../actions';
 import {SignUpPayloadType, UserSignUpRequestType} from "../types";
-
 const SIGN_UP_PATH = 'http://localhost:8080/auth/register';
+
+interface responseProps {
+    firstName?: string,
+    lastName?: string,
+    email?: string,
+    password?: string
+}
 
 export default function* signUpSaga({ payload } : SignUpPayloadType) {
     const request: UserSignUpRequestType = {
@@ -14,7 +20,9 @@ export default function* signUpSaga({ payload } : SignUpPayloadType) {
         password: payload.password
     }
 
-    let response: object = {};
+    let status;
+
+    let response: responseProps = {};
 
     try {
         yield fetch(SIGN_UP_PATH, {
@@ -25,18 +33,34 @@ export default function* signUpSaga({ payload } : SignUpPayloadType) {
             },
             body: JSON.stringify(request),
         })
-            .then(response => response.json())
+            .then(response => {
+                status = response.status;
+                return response.json()
+            })
             .then(data => response = data)
             .catch(e => console.error('FETCH ERROR', e));
 
-        // @ts-ignore
-        if (response?.status === 500) {
-            throw Error('User already exist');
+        if (status === 400) {
+            throw Error('Validation error');
+        } else if (status === 422) {
+            response.firstName = "";
+            response.lastName = "";
+            response.password = "";
+            response.email = "User is already exist";
+            throw Error('User already exists error');
         }
+
         yield put(signUpSucceed(response));
         yield put(push('/'));
+        response.firstName = "";
+        response.lastName = "";
+        response.password = "";
+        response.email = "";
     } catch (error: any) {
-        console.error('SIGN UP ERROR', error?.message);
-        yield put(signUpFailed(error));
+        yield put(signUpFailed(response));
+        response.firstName = "";
+        response.lastName = "";
+        response.password = "";
+        response.email = "";
     }
 }

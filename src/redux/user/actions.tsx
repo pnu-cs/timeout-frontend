@@ -21,7 +21,7 @@ export const logInInit = (payload: LogInUserInputDataType) => ({
     payload,
 });
 
-export const logInSucceed = (payload: string) => ({
+export const logInSucceed = (payload: object) => ({
     type: TYPES.LOG_IN_SUCCEED,
     payload,
 });

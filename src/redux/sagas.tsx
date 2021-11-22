@@ -1,10 +1,11 @@
 import { all } from 'redux-saga/effects';
 
 import userSaga from './user/sagas';
+import productsSaga from "./product/sagas";
+import fetchProductsSags from "./app/sagas/startsLoading";
 
 function* rootSaga() {
-    // can add more sagas
-    const sagas = [userSaga()];
+    const sagas = [userSaga(), productsSaga(), fetchProductsSags()];
     yield all(sagas);
 }
 

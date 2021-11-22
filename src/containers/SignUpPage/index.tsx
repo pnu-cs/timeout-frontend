@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
+
 import {FormControl, Grid, IconButton, InputAdornment} from "@mui/material";
+
+import {useDispatch, useSelector} from "react-redux";
+
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -9,7 +12,11 @@ import {signUpInit} from "../../redux/user/actions";
 import './styles.css';
 import '../button_style.css';
 import {SignUpUserInputDataType} from "../../redux/user/types";
+
 import {ColorButton, StylizedTextField} from "../stylized_components";
+
+import {selectIsUserError} from "../../redux/user/selectors";
+
 
 const SignUpPage: React.FC = () => {
     const dispatch = useDispatch();
@@ -20,6 +27,8 @@ const SignUpPage: React.FC = () => {
     const [passConfirm, setPassConfirm] = useState<string>('');
     const [showPassword, setPasswordVisibility] = useState<boolean>(false);
     const [showPassConfirm, setPassConfirmVisibility] = useState<boolean>(false);
+
+    const error = useSelector(selectIsUserError);
 
     const userData: SignUpUserInputDataType = {
         name,
@@ -37,6 +46,8 @@ const SignUpPage: React.FC = () => {
                     <StylizedTextField
                         fullWidth label="Name" value={name}
                         onChange={(e) => setName(e.target.value)}
+                        helperText={(error && error?.firstName) ? error?.firstName : ''}
+                        FormHelperTextProps={ { style: { color: 'red' } } }
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -54,6 +65,8 @@ const SignUpPage: React.FC = () => {
                     <StylizedTextField
                         fullWidth label="Surname" value={surname}
                         onChange={(e) => setSurname(e.target.value)}
+                        helperText={(error && error?.lastName) ? error?.lastName : ''}
+                        FormHelperTextProps={ { style: { color: 'red' } } }
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -71,6 +84,8 @@ const SignUpPage: React.FC = () => {
                     <StylizedTextField
                         fullWidth label="Email" value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        helperText={(error && error?.email) ? error?.email : ''}
+                        FormHelperTextProps={ { style: { color: 'red' } } }
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -89,6 +104,8 @@ const SignUpPage: React.FC = () => {
                         fullWidth label="Password" value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         type={showPassword ? 'input' : 'password'}
+                        helperText={(error && error?.password) ? error?.password : ''}
+                        FormHelperTextProps={ { style: { color: 'red' } } }
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">

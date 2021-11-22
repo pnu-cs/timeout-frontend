@@ -57,7 +57,7 @@ export const userReducer = (state = initialState, action: Action ) => {
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload.error,
+                error: action.payload,
             };
         }
         case TYPES.CLEAN_UP_USER_DATA: {
