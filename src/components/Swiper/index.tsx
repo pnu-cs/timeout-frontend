@@ -6,7 +6,6 @@ import './styles.css';
 import SwiperCore, {
   Mousewheel, Autoplay, Pagination,
 } from 'swiper';
-import item1 from '../../assets/item1.png';
 
 import { Product } from '../../redux/product/types';
 
@@ -78,7 +77,7 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({ items }) => {
             </p>
             <button className="buy-btn" type="button">Buy</button>
           </div>
-          <img src={item1} alt="item 1" />
+          <img src={item.photo} alt="item 1" />
         </SwiperSlide>
       ))}
     </Swiper>
