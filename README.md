@@ -1,3 +1,7 @@
+# SonarCloud 
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pnu-cs-timeout&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=pnu-cs-timeout) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pnu-cs-timeout&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pnu-cs-timeout) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pnu-cs-timeout&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pnu-cs-timeout) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pnu-cs-timeout&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pnu-cs-timeout)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

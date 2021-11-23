@@ -22,13 +22,6 @@ export interface UserLogInRequestType {
     email: string
 }
 
-export interface UserLogInResponseType {
-    firstName: string,
-    lastName: string,
-    password: string,
-    email: string
-}
-
 export interface SignUpPayloadType {
     payload: SignUpUserInputDataType,
 }

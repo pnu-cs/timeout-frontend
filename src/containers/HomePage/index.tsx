@@ -1,14 +1,36 @@
-import React from "react";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import ClockLoader from 'react-spinners/ClockLoader';
+import SwiperComponent from '../../components/Swiper';
+import { selectIsProductsLoading, selectProducts } from '../../redux/product/selectors';
 
-// TODO add layout for homepage
-// Це головна сторінка, і тут має знаходитись все, не включаючи хедер
-// для слайдеру, є бібліотека swiper, нею зараз найлекше можна було б зробити те що ми планувати
-// ця бібліотека тут в проекті вже є скачана, треба подумати як її використати і зробити
-// https://swiperjs.com/demos - тут документація
-// https://www.pinterest.com/pin/270145677637994087/ - приклад
-// дані для слайдеру треба брати зі сховища
-export const HomePage: React.FC = () => {
-    return <div>HomePage</div>;
-}
+const HomePage: React.FC = () => {
+  const products = useSelector(selectProducts);
+  const isLoading = useSelector(selectIsProductsLoading);
+
+  if (isLoading) {
+    return (
+      <div style={{
+        height: '80vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center',
+      }}
+      >
+        <ClockLoader color="gray" />
+      </div>
+    );
+  }
+
+  if (!products || products.length === 0) {
+    return (
+      <div style={{
+        height: '80vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'darkgray',
+      }}
+      >
+        Error loading products...
+      </div>
+    );
+  }
+
+  return <SwiperComponent items={products} />;
+};
 
 export default HomePage;
