@@ -2,3 +2,4 @@ node_modules/
 .idea/
  .DS_Store
  public/.DS_Store
+src/react-app-env.d.ts
