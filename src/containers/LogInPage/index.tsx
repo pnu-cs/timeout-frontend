@@ -93,7 +93,7 @@ const LogInPage: React.FC = () => {
         <Grid item>
           <p>
             New to TimeOut?
-            <Link to="/signup" className="signup-link-style">Create an account</Link>
+            <Link to="/signup" className="signup-link-style"> Create an account</Link>
             .
           </p>
         </Grid>

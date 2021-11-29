@@ -38,7 +38,7 @@ const Header: React.FC = () => {
           <Link className="link" to="/contact">Contact</Link>
         </div>
         <div className="link-container">
-          <Link className="link" to="/">About Us</Link>
+          <Link className="link" to="/about-us">About Us</Link>
         </div>
         <div className="link-container">
           {isLoggedIn
