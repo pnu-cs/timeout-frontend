@@ -15,5 +15,4 @@ export interface Product {
     strapLength: string,
     clockWork: string,
     waterResistance: string,
-    photo: string,
 }

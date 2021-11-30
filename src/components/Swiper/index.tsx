@@ -87,7 +87,7 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({ items, onBuyPress }) 
               Water resistant:&#10240;
               {item.waterResistance}
             </p>
-            <button className="buy-btn" type="button">Buy</button>
+            <button className="buy-btn" type="button" onClick={onBuyPress}>Buy</button>
           </div>
           <img src={item.photo} alt={item.name} />
         </SwiperSlide>
