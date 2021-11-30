@@ -3,7 +3,7 @@ export interface Product {
     photo: string,
     price: string,
     description: string,
-    useFor: string,
+    useForDescription: string,
     brand: string,
     model: string,
     yearOfIssue: number,
