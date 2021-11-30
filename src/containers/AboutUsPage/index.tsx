@@ -19,9 +19,9 @@ const AboutUsPage: React.FC = () => {
     mr: 1.5,
   };
   return (
-    <div style={{ overflowY: 'scroll' }}>
+    <div style={{ overflowY: 'auto' }}>
       <h1 style={{ textAlign: 'center' }}>Meet our TimeOut Team</h1>
-      <Grid container direction="row" spacing={2} style={{ justifyContent: 'center' }}>
+      <Grid container direction="row" spacing={2} style={{ justifyContent: 'center', paddingBottom: 10 }}>
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <div className="card">
             <img src={MykhailoPhoto} alt="Mike Pavliuk" style={{ width: '100%' }} />
