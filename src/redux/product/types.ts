@@ -1,8 +1,9 @@
 export interface Product {
     name: string,
+    photo: string,
     price: string,
     description: string,
-    useFor: string,
+    useForDescription: string,
     brand: string,
     model: string,
     yearOfIssue: number,

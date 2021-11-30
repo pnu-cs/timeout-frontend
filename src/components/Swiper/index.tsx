@@ -46,39 +46,50 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({ items, onBuyPress }) 
             <p>
               {item.description}
               <br />
+              {item.useForDescription}
               <br />
-              Case thickness:
+              <br />
+              Brand:&#10240;
+              {item.brand}
+              <br />
+              Model:&#10240;
+              {item.model}
+              <br />
+              Year of issue:&#10240;
+              {item.yearOfIssue}
+              <br />
+              Case thickness:&#10240;
               {item.housingThickness}
               <br />
-              Dial color:
+              Housing material:&#10240;
+              {item.housingMaterial}
+              <br />
+              Dial color:&#10240;
               {item.dialColor}
               <br />
-              Movement:
+              Movement:&#10240;
               {item.clockWork}
               <br />
-              Material:
+              Material:&#10240;
               {item.strapMaterial}
               <br />
               <br />
-              Strap width:
+              Strap width:&#10240;
               {item.strapLength}
               <br />
-              Adjustable length: (Min - Max) 150-200mm
-              <br />
-              Strap:
+              Strap:&#10240;
               {item.strapMaterial}
               <br />
-              Strap colour:
+              Strap colour:&#10240;
               {item.strapColor}
               <br />
               <br />
-              Interchangeable straps: Yes
-              <br />
-              Water resistant: Up to 3 ATM (Rain resistant)
+              Water resistant:&#10240;
+              {item.waterResistance}
             </p>
-            <button className="buy-btn" type="button" onClick={onBuyPress}>Buy</button>
+            <button className="buy-btn" type="button">Buy</button>
           </div>
-          <img src={item.photo} alt="item 1" />
+          <img src={item.photo} alt={item.name} />
         </SwiperSlide>
       ))}
     </Swiper>

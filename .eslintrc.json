@@ -38,7 +38,8 @@
                 "unnamedComponents": "arrow-function"
             }
         ],
-        "no-console": "off"
+        "no-console": "off",
+        "linebreak-style": 0
     },
     "settings": {
         "import/resolver": {

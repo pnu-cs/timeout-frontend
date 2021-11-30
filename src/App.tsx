@@ -13,6 +13,7 @@ import configureStore, { history } from './redux/store';
 
 import Header from './components/Header';
 import './App.css';
+import AboutUsPage from './containers/AboutUsPage';
 
 const store = configureStore();
 
@@ -24,6 +25,7 @@ const App: React.FC = () => (
         <Switch>
           <Route path="/" component={HomePage} exact />
           <Route path="/login" component={LogInPage} />
+          <Route path="/about-us" component={AboutUsPage} />
           <Route path="/signup" component={SignUpPage} />
           <Route path="/my-profile" component={MyProfile} />
           <Route path="/contact" component={ContactPage} />
