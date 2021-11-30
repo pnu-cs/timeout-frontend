@@ -1,0 +1,26 @@
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    border-radius: 10px;
+    transition: all .2s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.my-container {
+    padding: 0 16px;
+}

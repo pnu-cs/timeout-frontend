@@ -20,7 +20,7 @@ const ContactPage: React.FC = () => {
   const [message, setMessage] = useState<string>('');
   const [captchaVerify, setCaptchaVerify] = useState<boolean>(false);
 
-  const regex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+  const regex = /^(?=.{1,64}@)[A-Za-z0-9_-]+(\.[A-Za-z0-9_-]+)*@((gmail\.com)|(comp-sc\.if\.ua)|(pnu\.edu\.ua))$/i;
 
   const submit = () => {
     if (fullName && email && message && captchaVerify) {
