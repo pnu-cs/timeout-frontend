@@ -6,7 +6,6 @@ import './styles.css';
 import SwiperCore, {
   Mousewheel, Autoplay, Pagination,
 } from 'swiper';
-import item1 from '../../assets/item1.png';
 
 import { Product } from '../../redux/product/types';
 
@@ -14,9 +13,10 @@ SwiperCore.use([Mousewheel, Autoplay, Pagination]);
 
 interface SwiperComponentProps {
     items: Product[];
+    onBuyPress: any
 }
 
-const SwiperComponent: React.FC<SwiperComponentProps> = ({ items }) => {
+const SwiperComponent: React.FC<SwiperComponentProps> = ({ items, onBuyPress }) => {
   const pagination = {
     clickable: true,
     renderBullet(index: number, className: string) {
@@ -76,9 +76,9 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({ items }) => {
               <br />
               Water resistant: Up to 3 ATM (Rain resistant)
             </p>
-            <button className="buy-btn" type="button">Buy</button>
+            <button className="buy-btn" type="button" onClick={onBuyPress}>Buy</button>
           </div>
-          <img src={item1} alt="item 1" />
+          <img src={item.photo} alt="item 1" />
         </SwiperSlide>
       ))}
     </Swiper>

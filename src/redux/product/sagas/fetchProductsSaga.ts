@@ -1,32 +1,24 @@
 import { put } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
+import axios from 'axios';
 import { fetchProductsFailed, fetchProductsSucceed } from '../actions';
 
 const GET_PRODUCTS_PATH = 'http://localhost:8080/products';
 
 export default function* fetchProductsSags() {
-  let response: object;
+  let response: any;
+  let error: any;
 
-  try {
-    yield fetch(GET_PRODUCTS_PATH, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-    // eslint-disable-next-line no-return-assign
-      .then((data) => response = data)
-      .catch(() => {
-        throw new Error('FETCH PRODUCTS ERROR');
-      });
+  yield axios.get(GET_PRODUCTS_PATH).then((resp) => {
+    response = resp.data;
+  }).catch((e) => {
+    error = e.message;
+  });
 
-    // @ts-ignore
+  if (response) {
     yield put(fetchProductsSucceed(response));
-    yield put(push('/'));
-  } catch (error: any) {
-    console.error('FETCH PRODUCTS ERROR', error?.message);
+  }
+
+  if (error) {
     yield put(fetchProductsFailed(error));
   }
 }
