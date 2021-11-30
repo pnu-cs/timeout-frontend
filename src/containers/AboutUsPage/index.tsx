@@ -19,10 +19,10 @@ const AboutUsPage: React.FC = () => {
     mr: 1.5,
   };
   return (
-    <div>
+    <div style={{ overflowY: 'scroll' }}>
       <h1 style={{ textAlign: 'center' }}>Meet our TimeOut Team</h1>
-      <Grid container direction="row" spacing={2}>
-        <Grid item>
+      <Grid container direction="row" spacing={2} style={{ justifyContent: 'center' }}>
+        <Grid item xs={12} sm={6} md={4} lg={3}>
           <div className="card">
             <img src={MykhailoPhoto} alt="Mike Pavliuk" style={{ width: '100%' }} />
             <div className="my-container">
@@ -42,7 +42,7 @@ const AboutUsPage: React.FC = () => {
             </div>
           </div>
         </Grid>
-        <Grid item>
+        <Grid item xs={12} sm={6} md={4} lg={3}>
           <div className="card">
             <img src={NadiiaPhoto} alt="Nadiia Fomenko" style={{ width: '100%' }} />
             <div className="my-container">
@@ -62,7 +62,7 @@ const AboutUsPage: React.FC = () => {
             </div>
           </div>
         </Grid>
-        <Grid item>
+        <Grid item xs={12} sm={6} md={4} lg={3}>
           <div className="card">
             <img src={YuriiPhoto} alt="Yura Rov" style={{ width: '100%' }} />
             <div className="my-container">
@@ -82,7 +82,7 @@ const AboutUsPage: React.FC = () => {
             </div>
           </div>
         </Grid>
-        <Grid item>
+        <Grid item xs={12} sm={6} md={4} lg={3}>
           <div className="card">
             <img src={OlegPhoto} alt="Oleg Pavliv" style={{ width: '100%' }} />
             <div className="my-container">
