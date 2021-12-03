@@ -1,12 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ClockLoader from 'react-spinners/ClockLoader';
 import SwiperComponent from '../../components/Swiper';
 import { selectIsProductsLoading, selectProducts } from '../../redux/product/selectors';
+import { createOrderInit } from '../../redux/orders/actions';
 
 const HomePage: React.FC = () => {
+  const dispatch = useDispatch();
+
   const products = useSelector(selectProducts);
   const isLoading = useSelector(selectIsProductsLoading);
+  const onBuyPress: any = () => dispatch(createOrderInit());
 
   if (isLoading) {
     return (
@@ -30,7 +34,7 @@ const HomePage: React.FC = () => {
     );
   }
 
-  return <SwiperComponent items={products} />;
+  return <SwiperComponent items={products} onBuyPress={onBuyPress} />;
 };
 
 export default HomePage;

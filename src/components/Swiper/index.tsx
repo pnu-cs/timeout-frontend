@@ -13,9 +13,10 @@ SwiperCore.use([Mousewheel, Autoplay, Pagination]);
 
 interface SwiperComponentProps {
     items: Product[];
+    onBuyPress: any
 }
 
-const SwiperComponent: React.FC<SwiperComponentProps> = ({ items }) => {
+const SwiperComponent: React.FC<SwiperComponentProps> = ({ items, onBuyPress }) => {
   const pagination = {
     clickable: true,
     renderBullet(index: number, className: string) {
@@ -86,7 +87,7 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({ items }) => {
               Water resistant:&#10240;
               {item.waterResistance}
             </p>
-            <button className="buy-btn" type="button">Buy</button>
+            <button className="buy-btn" type="button" onClick={onBuyPress}>Buy</button>
           </div>
           <img src={item.photo} alt={item.name} />
         </SwiperSlide>

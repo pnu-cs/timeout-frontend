@@ -6,4 +6,6 @@ export const selectIsUserLoading = createSelector(userSelector, ({ isLoading }) 
 
 export const selectIsUserLoggedIn = createSelector(userSelector, ({ validToken }) => validToken);
 
+export const selectCurrentUser = createSelector(userSelector, ({ currentUser }) => currentUser);
+
 export const selectIsUserError = createSelector(userSelector, ({ error }) => error);
