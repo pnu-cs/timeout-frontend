@@ -1,53 +1,43 @@
 import { put, select } from 'redux-saga/effects';
 import axios from 'axios';
-import { push } from 'react-router-redux';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { SelectEffect } from '@redux-saga/core/effects';
-import { createOrderSucceed, createOrderFailed } from '../actions';
-
+import { createOrderFailed, createOrderSucceed } from '../actions';
 import { selectIsUserLoggedIn } from '../../user/selectors';
 
 const CREATE_ORDER_PATH = 'http://localhost:8080/orders/add';
 
-export default function* createOrderSaga() {
+interface User {
+  email:string,
+  firstName: string
+  id: number
+  lastName: string,
+  password: string,
+}
+
+export default function* createOrderSaga({ payload }: any) {
   let response: any;
   let error: any;
+  const user: User = yield select(selectIsUserLoggedIn);
 
-  const isLoggedIn: SelectEffect = yield select(selectIsUserLoggedIn);
+  const products = payload.map((id: any) => ({ productId: id, quantity: '1' }));
 
-  console.log('isLoggedIn', isLoggedIn);
-  const json: any = {
-    userId: '1',
-    createdAt: '2019-07-04T13:33:03.969Z',
-    orderDetailsDtoList: [
-      {
-        productId: '1',
-        quantity: '1',
-      },
-      {
-        productId: '2',
-        quantity: '2',
-      },
-    ],
+  const request = {
+    userId: user.id,
+    createdAt: Date.now(),
+    orderDetailsDtoList: products,
   };
 
-  if (isLoggedIn) {
-    yield axios.post(CREATE_ORDER_PATH, json).then((resp) => {
-      response = resp.data;
-    }).catch((e) => {
-      error = e.message;
-    });
+  yield axios.post(CREATE_ORDER_PATH, request).then((resp) => {
+    response = resp.data;
+  }).catch((e) => {
+    error = e.message;
+  });
 
-    if (response) {
-      yield put(createOrderSucceed(response));
-      return;
-    }
-
-    if (error) {
-      yield put(createOrderFailed(error));
-      return;
-    }
+  if (response) {
+    yield put(createOrderSucceed(response));
+    return;
   }
 
-  yield put(push('/login'));
+  if (error) {
+    yield put(createOrderFailed(error));
+  }
 }

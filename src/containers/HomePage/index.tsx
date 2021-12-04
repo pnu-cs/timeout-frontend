@@ -3,14 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import ClockLoader from 'react-spinners/ClockLoader';
 import SwiperComponent from '../../components/Swiper';
 import { selectIsProductsLoading, selectProducts } from '../../redux/product/selectors';
-import { createOrderInit } from '../../redux/orders/actions';
+import { addProductToOrder } from '../../redux/orders/actions';
+import { selectProductsInCart } from '../../redux/orders/selectors';
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch();
 
   const products = useSelector(selectProducts);
   const isLoading = useSelector(selectIsProductsLoading);
-  const onBuyPress: any = () => dispatch(createOrderInit());
+  const productsInCart = useSelector(selectProductsInCart);
+  const onBuyPress: any = (product: any) => dispatch(
+    addProductToOrder([...productsInCart, product]),
+  );
 
   if (isLoading) {
     return (

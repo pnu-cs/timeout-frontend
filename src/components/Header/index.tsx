@@ -88,7 +88,7 @@ const Header: React.FC = () => {
       >
         <MenuItem>
           <Avatar />
-          <Link to="/my-profile">My Profile</Link>
+          <Link to="/cart">My cart</Link>
         </MenuItem>
         <Divider />
         <MenuItem>

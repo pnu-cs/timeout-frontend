@@ -1,7 +1,8 @@
 import TYPES from './constants';
 
 const initialState = {
-  orderId: [],
+  productsInCart: [],
+  orderId: null,
   isLoading: false,
   error: null,
 };
@@ -25,6 +26,12 @@ export const ordersReducer = (state = initialState, action: Action) => {
         ...state,
         isLoading: false,
         orderId: action.payload,
+      };
+    }
+    case TYPES.ADD__PRODUCT_TO_ORDER: {
+      return {
+        ...state,
+        productsInCart: action.payload,
       };
     }
     case TYPES.CREATE_ORDER_FAILED: {

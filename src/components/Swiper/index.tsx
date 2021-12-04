@@ -4,12 +4,12 @@ import 'swiper/swiper-bundle.min.css';
 import './styles.css';
 
 import SwiperCore, {
-  Mousewheel, Autoplay, Pagination,
+  Mousewheel, Autoplay, Pagination, Navigation,
 } from 'swiper';
 
 import { Product } from '../../redux/product/types';
 
-SwiperCore.use([Mousewheel, Autoplay, Pagination]);
+SwiperCore.use([Mousewheel, Autoplay, Pagination, Navigation]);
 
 interface SwiperComponentProps {
     items: Product[];
@@ -26,14 +26,9 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({ items, onBuyPress }) 
 
   return (
     <Swiper
-      mousewheel
       className="mySwiper"
       pagination={pagination}
       loop
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: true,
-      }}
     >
       {items.map((item: Product) => (
         <SwiperSlide>
@@ -87,7 +82,13 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({ items, onBuyPress }) 
               Water resistant:&#10240;
               {item.waterResistance}
             </p>
-            <button className="buy-btn" type="button" onClick={onBuyPress}>Buy</button>
+            <button
+              className="buy-btn"
+              type="button"
+              onClick={() => onBuyPress(item.id)}
+            >
+              Add To Cart
+            </button>
           </div>
           <img src={item.photo} alt={item.name} />
         </SwiperSlide>

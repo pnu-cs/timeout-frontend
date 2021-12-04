@@ -8,6 +8,7 @@ import SignUpPage from './containers/SignUpPage';
 import HomePage from './containers/HomePage';
 import MyProfile from './containers/MyProfile';
 import ContactPage from './containers/ContactPage';
+import CartPage from './containers/CartPage';
 
 import configureStore, { history } from './redux/store';
 
@@ -29,6 +30,7 @@ const App: React.FC = () => (
           <Route path="/signup" component={SignUpPage} />
           <Route path="/my-profile" component={MyProfile} />
           <Route path="/contact" component={ContactPage} />
+          <Route path="/cart" component={CartPage} />
         </Switch>
       </div>
     </ConnectedRouter>
