@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -13,11 +13,13 @@ import Logout from '@mui/icons-material/Logout';
 import './styles.css';
 
 import { selectIsUserLoggedIn } from '../../redux/user/selectors';
+import { logout } from '../../redux/user/actions';
 
 const Header: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsUserLoggedIn);
 
   const handleClick = (event: any) => {
@@ -95,7 +97,9 @@ const Header: React.FC = () => {
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
-          Logout
+          <button type="submit" onClick={() => dispatch(logout())}>
+            Logout
+          </button>
         </MenuItem>
       </Menu>
     </nav>

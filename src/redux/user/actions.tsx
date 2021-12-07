@@ -31,6 +31,10 @@ export const logInFailed = (payload: object) => ({
   payload,
 });
 
+export const logout = () => ({
+  type: TYPES.LOG_OUT,
+});
+
 export const cleanUpUserData = () => ({
   type: TYPES.CLEAN_UP_USER_DATA,
 });
