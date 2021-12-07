@@ -41,6 +41,9 @@ export const ordersReducer = (state = initialState, action: Action) => {
         error: action.payload,
       };
     }
+    case TYPES.CLEAR_ORDERS_DATA: {
+      return initialState;
+    }
     default:
       return state;
   }

@@ -19,3 +19,7 @@ export const createOrderFailed = (payload: object) => ({
   type: TYPES.CREATE_ORDER_FAILED,
   payload,
 });
+
+export const clearOrdersData = () => ({
+  type: TYPES.CLEAR_ORDERS_DATA,
+});

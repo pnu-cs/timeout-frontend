@@ -13,7 +13,7 @@ import Logout from '@mui/icons-material/Logout';
 import './styles.css';
 
 import { selectIsUserLoggedIn } from '../../redux/user/selectors';
-import { logout } from '../../redux/user/actions';
+import { cleanUpUserData } from '../../redux/user/actions';
 
 const Header: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -97,7 +97,7 @@ const Header: React.FC = () => {
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
-          <button type="submit" onClick={() => dispatch(logout())}>
+          <button type="submit" onClick={() => dispatch(cleanUpUserData())}>
             Logout
           </button>
         </MenuItem>

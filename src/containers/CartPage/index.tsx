@@ -1,18 +1,22 @@
 import React from 'react';
+import emailjs from 'emailjs-com';
 import { useSnackbar } from 'notistack';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectOrderId, selectProductsInCart, selectOrderError } from '../../redux/orders/selectors';
+
+import { selectProductsInCart, selectOrderError } from '../../redux/orders/selectors';
 import { selectProducts } from '../../redux/product/selectors';
 import { Product } from '../../redux/product/types';
+import { clearOrdersData, createOrderInit } from '../../redux/orders/actions';
+
 import './styles.css';
-import { createOrderInit } from '../../redux/orders/actions';
 
 const CartPage: React.FC = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
   const productsIds = useSelector(selectProductsInCart);
   const products = useSelector(selectProducts);
-  const orderCreated = useSelector(selectOrderId);
   const orderError = useSelector(selectOrderError);
 
   const productsAddedToCart = products.filter((product: any) => productsIds.includes(product.id));
@@ -22,7 +26,7 @@ const CartPage: React.FC = () => {
       createOrderInit(productsIds),
     );
 
-    if (orderCreated && !orderError) {
+    if (!orderError) {
       enqueueSnackbar('Thank you for your order!', {
         variant: 'success',
         anchorOrigin: {
@@ -41,6 +45,25 @@ const CartPage: React.FC = () => {
         },
       });
     }
+
+    const serviceId = 'service_xm5ebnm';
+    const templateId = 'template_9eahxki';
+    const fullName = 'Name';
+    const email = 'nadiya.fomenko@gmail.com';
+    const message = 'We receive your order!';
+
+    const templateParams = {
+      fullName,
+      email,
+      message,
+    };
+
+    emailjs.send(serviceId, templateId, templateParams)
+      .then((response) => console.log(response))
+      .then((error) => console.error(error));
+
+    dispatch(clearOrdersData());
+    history.push('/');
   };
 
   return (
