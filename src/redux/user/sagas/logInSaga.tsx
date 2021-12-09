@@ -17,13 +17,10 @@ export default function* logInSaga({ payload }: LogInPayloadType) {
   let error: any;
   // let status;
 
-  console.log('request', request);
   yield axios.post(LOG_IN_PATH, request).then((resp) => {
-    console.log(resp);
     response = resp.data;
-  }).catch((e) => {
-    console.log('error', e);
-    error = e.message;
+  }).catch(() => {
+    error = 'User not found';
   });
 
   if (response) {
@@ -32,7 +29,7 @@ export default function* logInSaga({ payload }: LogInPayloadType) {
     return;
   }
 
-  if (error) {
-    yield put(logInFailed(response));
+  if (error === 'User not found') {
+    yield put(logInFailed(error));
   }
 }

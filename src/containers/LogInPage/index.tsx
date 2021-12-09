@@ -25,7 +25,6 @@ const LogInPage: React.FC = () => {
   const [showPassword, setPasswordVisibility] = useState<boolean>(false);
 
   const error = useSelector(selectIsUserError);
-
   const userData: LogInUserInputDataType = {
     email,
     password,
@@ -63,7 +62,7 @@ const LogInPage: React.FC = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type={showPassword ? 'input' : 'password'}
-            helperText={error && error?.userNotExists ? error?.userNotExists : ''}
+            helperText={error || ''}
             FormHelperTextProps={{ style: { color: 'red' } }}
             InputProps={{
               startAdornment: (

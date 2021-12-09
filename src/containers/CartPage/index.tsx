@@ -4,8 +4,10 @@ import { useSnackbar } from 'notistack';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { createHash } from 'crypto';
 import { selectProductsInCart, selectOrderError } from '../../redux/orders/selectors';
 import { selectProducts } from '../../redux/product/selectors';
+import { selectIsUserLoggedIn } from '../../redux/user/selectors';
 import { Product } from '../../redux/product/types';
 import { clearOrdersData, createOrderInit } from '../../redux/orders/actions';
 
@@ -18,8 +20,10 @@ const CartPage: React.FC = () => {
   const productsIds = useSelector(selectProductsInCart);
   const products = useSelector(selectProducts);
   const orderError = useSelector(selectOrderError);
-
+  const user = useSelector(selectIsUserLoggedIn);
   const productsAddedToCart = products.filter((product: any) => productsIds.includes(product.id));
+  const productsNames = productsAddedToCart.map((item: Product) => item.name).join(', ');
+  const hash = (stringForHash: string) => createHash('sha256').update(stringForHash).digest('hex');
 
   const onOrderPress: any = () => {
     dispatch(
@@ -27,17 +31,31 @@ const CartPage: React.FC = () => {
     );
 
     if (!orderError) {
-      enqueueSnackbar('Thank you for your order!', {
+      enqueueSnackbar('Thank you for your order, check your email for further instructions!', {
         variant: 'success',
         anchorOrigin: {
           vertical: 'top',
           horizontal: 'center',
         },
       });
-    }
+      const serviceId: string = 'service_xm5ebnm';
+      const templateId: string = 'template_yficl1l';
+      const customerEmail: string = user.email;
+      const orderHash: string = hash(customerEmail + Date.now());
+      const templateParams = {
+        customerEmail,
+        orderHash,
+        productsNames,
+      };
 
-    if (orderError) {
-      enqueueSnackbar('Error creating order! Try later', {
+      emailjs.send(serviceId, templateId, templateParams)
+        .then((response) => console.log(response))
+        .then((error) => console.error(error));
+
+      dispatch(clearOrdersData());
+      history.push('/');
+    } else {
+      enqueueSnackbar('An error occurred while creating your order! Try again!', {
         variant: 'error',
         anchorOrigin: {
           vertical: 'top',
@@ -45,25 +63,6 @@ const CartPage: React.FC = () => {
         },
       });
     }
-
-    const serviceId = 'service_xm5ebnm';
-    const templateId = 'template_9eahxki';
-    const fullName = 'Name';
-    const email = 'nadiya.fomenko@gmail.com';
-    const message = 'We receive your order!';
-
-    const templateParams = {
-      fullName,
-      email,
-      message,
-    };
-
-    emailjs.send(serviceId, templateId, templateParams)
-      .then((response) => console.log(response))
-      .then((error) => console.error(error));
-
-    dispatch(clearOrdersData());
-    history.push('/');
   };
 
   return (
@@ -122,7 +121,6 @@ const CartPage: React.FC = () => {
               Water resistant:&#10240;
               {item.waterResistance}
             </p>
-
           </div>
         </div>
       ))}
@@ -135,7 +133,6 @@ const CartPage: React.FC = () => {
         Order
       </button>
       )}
-
     </section>
   );
 };

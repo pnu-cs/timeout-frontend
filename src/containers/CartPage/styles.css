@@ -1,4 +1,3 @@
-
 .container {
     height: 100vh;
     display: flex;
@@ -31,7 +30,7 @@
     padding: 10px 20px;
     border: 1px solid #c2833a;
     border-radius: 20px;
-    margin-top: 50px;
+    margin-top: 25px;
     margin-bottom: 150px;
 }
 
