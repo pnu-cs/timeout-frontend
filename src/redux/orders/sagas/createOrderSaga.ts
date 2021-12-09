@@ -3,7 +3,7 @@ import axios from 'axios';
 import { createOrderFailed, createOrderSucceed } from '../actions';
 import { selectIsUserLoggedIn } from '../../user/selectors';
 
-const CREATE_ORDER_PATH = 'http://localhost:8080/orders/add';
+const CREATE_ORDER_PATH = 'http://ec2-3-70-190-34.eu-central-1.compute.amazonaws.com/orders/add';
 
 interface User {
   email:string,

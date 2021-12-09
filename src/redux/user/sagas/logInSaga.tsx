@@ -5,7 +5,7 @@ import axios from 'axios';
 import { logInSucceed, logInFailed } from '../actions';
 import { LogInPayloadType, UserLogInRequestType } from '../types';
 
-const LOG_IN_PATH = 'http://localhost:8080/auth/login';
+const LOG_IN_PATH = 'http://ec2-3-70-190-34.eu-central-1.compute.amazonaws.com/auth/login';
 
 export default function* logInSaga({ payload }: LogInPayloadType) {
   const request: UserLogInRequestType = {

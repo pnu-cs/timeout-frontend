@@ -4,7 +4,7 @@ import { push } from 'connected-react-router';
 import { signUpSucceed, signUpFailed } from '../actions';
 import { SignUpPayloadType, UserSignUpRequestType } from '../types';
 
-const SIGN_UP_PATH = 'http://localhost:8080/auth/register';
+const SIGN_UP_PATH = 'http://ec2-3-70-190-34.eu-central-1.compute.amazonaws.com/auth/register';
 
 interface responseProps {
     firstName?: string,
