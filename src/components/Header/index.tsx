@@ -42,16 +42,25 @@ const Header: React.FC = () => {
         <div className="link-container">
           <Link className="link" to="/about-us">About Us</Link>
         </div>
-        <div className="link-container">
-          {isLoggedIn
-            ? (
+        {isLoggedIn
+          ? (
+            <div className="link-container">
               <Tooltip title="My profile">
                 <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
                   <Avatar sx={{ width: 36, height: 36 }}>U</Avatar>
                 </IconButton>
               </Tooltip>
-            ) : <Link to="/login" className="link">Log In</Link> }
-        </div>
+            </div>
+          ) : (
+            <>
+              <div className="link-container" style={{ marginLeft: 30 }}>
+                <Link className="link" to="/signup">Sign Up</Link>
+              </div>
+              <div className="link-container">
+                <Link className="link" to="/login">Log In</Link>
+              </div>
+            </>
+          ) }
       </section>
 
       <Menu

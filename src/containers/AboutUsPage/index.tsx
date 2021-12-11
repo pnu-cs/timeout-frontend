@@ -18,6 +18,21 @@ const AboutUsPage: React.FC = () => {
     height: 35,
     mr: 1.5,
   };
+
+  const socialMediaButtons = (instagramLink: string, gitHubLink: string, linkedInLink: string) => (
+    <>
+      <IconButton component={Link} to={{ pathname: instagramLink }} target="_blank" rel="noopener noreferrer">
+        <InstagramIcon sx={iconStyle} />
+      </IconButton>
+      <IconButton component={Link} to={{ pathname: gitHubLink }} target="_blank" rel="noopener noreferrer">
+        <GitHubIcon sx={iconStyle} />
+      </IconButton>
+      <IconButton component={Link} to={{ pathname: linkedInLink }} target="_blank" rel="noopener noreferrer">
+        <LinkedInIcon sx={iconStyle} />
+      </IconButton>
+    </>
+  );
+
   return (
     <div style={{ overflowY: 'auto' }}>
       <h1 style={{ textAlign: 'center' }}>Meet our TimeOut Team</h1>
@@ -30,15 +45,11 @@ const AboutUsPage: React.FC = () => {
               <p>Team Lead, Back-end</p>
               <p>Best leading in the world.</p>
               <p>pavliuk.mykhailo.dev@gmail.com</p>
-              <IconButton component={Link} to={{ pathname: 'https://www.instagram.com/mikeofsun/' }} target="_blank" rel="noopener noreferrer">
-                <InstagramIcon sx={iconStyle} />
-              </IconButton>
-              <IconButton component={Link} to={{ pathname: 'https://github.com/MikePavliuk' }} target="_blank" rel="noopener noreferrer">
-                <GitHubIcon sx={iconStyle} />
-              </IconButton>
-              <IconButton component={Link} to={{ pathname: 'https://www.linkedin.com/in/pavliuk-mykhailo' }} target="_blank" rel="noopener noreferrer">
-                <LinkedInIcon sx={iconStyle} />
-              </IconButton>
+              {socialMediaButtons(
+                'https://www.instagram.com/mikeofsun/',
+                'https://github.com/MikePavliuk',
+                'https://www.linkedin.com/in/pavliuk-mykhailo',
+              )}
             </div>
           </div>
         </Grid>
@@ -50,15 +61,11 @@ const AboutUsPage: React.FC = () => {
               <p>UI/UX, Front-end</p>
               <p>The Goddess of ReactJS</p>
               <p>nadiya.fomenko@gmail.com</p>
-              <IconButton component={Link} to={{ pathname: 'https://www.instagram.com/nadiia_fmnk/' }} target="_blank" rel="noopener noreferrer">
-                <InstagramIcon sx={iconStyle} />
-              </IconButton>
-              <IconButton component={Link} to={{ pathname: 'https://github.com/nadiyafomenko' }} target="_blank" rel="noopener noreferrer">
-                <GitHubIcon sx={iconStyle} />
-              </IconButton>
-              <IconButton component={Link} to={{ pathname: 'https://www.linkedin.com/in/nadiia-fomenko-a9b9b0176/' }} target="_blank" rel="noopener noreferrer">
-                <LinkedInIcon sx={iconStyle} />
-              </IconButton>
+              {socialMediaButtons(
+                'https://www.instagram.com/nadiia_fmnk/',
+                'https://github.com/nadiyafomenko',
+                'https://www.linkedin.com/in/nadiia-fomenko-a9b9b0176/',
+              )}
             </div>
           </div>
         </Grid>
@@ -70,15 +77,11 @@ const AboutUsPage: React.FC = () => {
               <p>UI, Front-end</p>
               <p>He stylized this page.</p>
               <p>rovinskyi.yurii@comp-sc.if.ua</p>
-              <IconButton component={Link} to={{ pathname: 'https://www.instagram.com/winds.of.change_/' }} target="_blank" rel="noopener noreferrer">
-                <InstagramIcon sx={iconStyle} />
-              </IconButton>
-              <IconButton component={Link} to={{ pathname: 'https://github.com/YuraRov' }} target="_blank" rel="noopener noreferrer">
-                <GitHubIcon sx={iconStyle} />
-              </IconButton>
-              <IconButton component={Link} to={{ pathname: 'https://www.linkedin.com/in/yurii-rovinskyi/' }} target="_blank" rel="noopener noreferrer">
-                <LinkedInIcon sx={iconStyle} />
-              </IconButton>
+              {socialMediaButtons(
+                'https://www.instagram.com/winds.of.change_/',
+                'https://github.com/YuraRov',
+                'https://www.linkedin.com/in/yurii-rovinskyi/',
+              )}
             </div>
           </div>
         </Grid>
