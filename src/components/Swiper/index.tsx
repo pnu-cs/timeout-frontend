@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import './styles.css';
@@ -8,6 +8,7 @@ import SwiperCore, {
 } from 'swiper';
 
 import { Product } from '../../redux/product/types';
+import { StylizedTextField } from '../../containers/stylized_components';
 
 SwiperCore.use([Mousewheel, Autoplay, Pagination, Navigation]);
 
@@ -29,43 +30,31 @@ export const watchInformation = (item: Product) => (
       {item.useForDescription}
       <br />
       <br />
-      Brand:&#10240;
-      {item.brand}
+      {`Brand: ${item.brand}`}
       <br />
-      Model:&#10240;
-      {item.model}
+      {`Model: ${item.model}`}
       <br />
-      Year of issue:&#10240;
-      {item.yearOfIssue}
+      {`Year of issue: ${item.yearOfIssue}`}
       <br />
-      Case thickness:&#10240;
-      {item.housingThickness}
+      {`Case thickness: ${item.housingThickness}`}
       <br />
-      Housing material:&#10240;
-      {item.housingMaterial}
+      {`Housing material: ${item.housingMaterial}`}
       <br />
-      Dial color:&#10240;
-      {item.dialColor}
+      {`Dial color: ${item.dialColor}`}
       <br />
-      Movement:&#10240;
-      {item.clockWork}
+      {`Movement: ${item.clockWork}`}
       <br />
-      Material:&#10240;
-      {item.strapMaterial}
+      {`Material: ${item.strapMaterial}`}
       <br />
       <br />
-      Strap width:&#10240;
-      {item.strapLength}
+      {`Strap width: ${item.strapLength}`}
       <br />
-      Strap:&#10240;
-      {item.strapMaterial}
+      {`Strap: ${item.strapMaterial}`}
       <br />
-      Strap colour:&#10240;
-      {item.strapColor}
+      {`Strap colour: ${item.strapColor}`}
       <br />
       <br />
-      Water resistant:&#10240;
-      {item.waterResistance}
+      {`Water resistant: ${item.waterResistance}`}
     </p>
   </>
 );
@@ -78,20 +67,53 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({ items, onBuyPress }) 
     },
   };
 
+  const [quantity, setQuantity] = useState<number>(1);
+
   return (
     <Swiper
       className="mySwiper"
       pagination={pagination}
+      autoplay={false}
+      allowTouchMove={false}
+      mousewheel
       loop
     >
       {items.map((item: Product) => (
         <SwiperSlide>
           <div className="slide-description">
             {watchInformation(item)}
+            <StylizedTextField
+              id="outlined-number"
+              label="Quantity"
+              type="number"
+              value={quantity}
+              onChange={(e) => {
+                setQuantity(Number(e.target.value));
+              }}
+              onBlur={() => {
+                if (quantity < 1) {
+                  setQuantity(1);
+                }
+              }}
+              InputLabelProps={{
+                shrink: true,
+                style: { color: 'white' },
+              }}
+              size="medium"
+              margin="normal"
+              defaultValue={1}
+              inputProps={{
+                min: 1,
+                max: 99,
+                maxLength: 2,
+                style: { color: 'white', width: 122 },
+              }}
+            />
+            <br />
             <button
               className="buy-btn"
               type="button"
-              onClick={() => onBuyPress(item.id)}
+              onClick={() => onBuyPress({ productId: item.id, quantity })}
             >
               Add To Cart
             </button>

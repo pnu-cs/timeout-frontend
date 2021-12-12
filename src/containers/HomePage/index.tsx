@@ -12,9 +12,11 @@ const HomePage: React.FC = () => {
   const products = useSelector(selectProducts);
   const isLoading = useSelector(selectIsProductsLoading);
   const productsInCart = useSelector(selectProductsInCart);
-  const onBuyPress: any = (product: any) => dispatch(
-    addProductToOrder([...productsInCart, product]),
-  );
+  const onBuyPress: any = (product: any) => {
+    dispatch(
+      addProductToOrder([...productsInCart, product]),
+    );
+  };
 
   if (isLoading) {
     return (
