@@ -18,13 +18,13 @@ export default function* createOrderSaga({ payload }: any) {
   let error: any;
   const user: User = yield select(selectIsUserLoggedIn);
 
-  const products = payload.map((id: any) => ({ productId: id, quantity: '1' }));
-
   const request = {
     userId: user.id,
     createdAt: Date.now(),
-    orderDetailsDtoList: products,
+    orderDetailsDtoList: payload,
   };
+
+  console.log(request);
 
   yield axios.post(CREATE_ORDER_PATH, request).then((resp) => {
     response = resp.data;

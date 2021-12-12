@@ -18,17 +18,17 @@ const CartPage: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
-  const productsIds = useSelector(selectProductsInCart);
+  const productsInCart = useSelector(selectProductsInCart);
   const products = useSelector(selectProducts);
   const orderError = useSelector(selectOrderError);
   const user = useSelector(selectIsUserLoggedIn);
+  const productsIds = productsInCart.map((product: any) => product.productId);
   const productsAddedToCart = products.filter((product: any) => productsIds.includes(product.id));
   const productsNames = productsAddedToCart.map((item: Product) => item.name).join(', ');
   const hash = (stringForHash: string) => createHash('sha256').update(stringForHash).digest('hex');
-
   const onOrderPress: any = () => {
     dispatch(
-      createOrderInit(productsIds),
+      createOrderInit(productsInCart),
     );
 
     if (!orderError) {
@@ -74,6 +74,9 @@ const CartPage: React.FC = () => {
           <img src={item.photo} alt="selected product" />
           <div className="item-desc">
             {watchInformation(item)}
+            <div style={{ color: 'white' }}>
+              {`Quantity: ${productsInCart.find((product:any) => product.productId === item.id)?.quantity}`}
+            </div>
           </div>
         </div>
       ))}
