@@ -62,7 +62,7 @@ const LogInPage: React.FC = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type={showPassword ? 'input' : 'password'}
-            helperText={error || ''}
+            helperText={(error && typeof error === 'string') ? error : ''}
             FormHelperTextProps={{ style: { color: 'red' } }}
             InputProps={{
               startAdornment: (

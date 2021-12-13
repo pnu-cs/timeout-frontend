@@ -32,6 +32,7 @@ export const userReducer = (state = initialState, action: Action) => {
         ...state,
         isLoading: false,
         currentUser: action.payload,
+        error: null,
       };
     }
     case TYPES.SIGN_UP_FAILED: {
@@ -52,6 +53,7 @@ export const userReducer = (state = initialState, action: Action) => {
         ...state,
         isLoading: false,
         validToken: action.payload,
+        error: null,
       };
     }
     case TYPES.LOG_IN_FAILED: {
